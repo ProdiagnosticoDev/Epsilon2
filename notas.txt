@@ -1,0 +1,160 @@
+* crear proyecto laravel 
+ laravel new Epsilon
+
+levantar el servidor de dos formas :
+
+* php artisan serve
+* php -S localhost:8000 -t public
+* php -S 0.0.0.0:8000 -t public
+
+crear modelos
+
+* php artisan make:model <nombre>
+
+crear controllers
+
+*php artisan controller:make [Name]Controller
+
+
+* migraciones
+
+crear migracion 
+
+* php artisan make:migration <nombre_de_la_tabla>
+
+
+ejecutar migracion 
+
+* php artisan migrate
+
+modificar tablas
+
+* php artisan make:migration add price_to_product --table=product
+
+
+
+revertir migraciones
+
+* php artisan migrate:rollback
+
+
+revertir todas las migraciones
+
+* php artisan migrate:reset
+
+
+claves foráneas
+
+* php artisan make:migration add_category_id_to_product_table --table=nombre_tabla
+
+
+
+
+seeders
+
+crear seeder
+
+* php artisan make:seeder CategoryTableSeeder
+
+cargar seed
+
+* php artisab db:seed
+
+
+
+Resetear toda la base de datos:
+
+
+* php artisan migrate:fresh --seed
+
+
+Seeders para tablas y foreing keys
+
+productos -> categoría
+
+
+* crear solo una migración epecífica
+
+php artisan db:seed --class=ProductTableSeeder
+
+
+biblioteca Faker
+
+
+* Factories
+
+* crear
+
+php artisan make:factory nombreFactory
+
+*Elocuent - obtener informacion de base de datos
+
+
+
+ Form Request
+
+ * php artisan make:request UpdateProductRequest -- para tener validaciones reutilizarllos y código mas limpio
+
+
+
+* Middelware
+
+- concepto de backend , filtro intermedio antes del controlador o despues del controlador
+
+* php artisan make:middleware CheckValueInheader
+
+para que sea global
+
+*
+
+instalacion bibliotecas para JWT
+
+* instalacion 
+composer require tymon/jwt-auth
+
+* publicar la configuracion
+php artisan vendor:publish --provider="Tymon\JWTAuth\Providers\LaravelServiceProvider"
+
+* agregar jwt a .env
+php artisan jwt:secret
+
+
+    php artisan optimize:clear
+    php artisan config:clear
+    php artisan route:clear
+    php artisan view:clear
+    php artisan event:clear
+
+
+
+
+
+** spatie/laravel-permission
+
+composer require spatie/laravel-permission
+php artisan vendor:publish --provider="Spatie\Permission\PermissionServiceProvider"
+php artisan migrate
+
+
+
+php artisan make:command ImportUsersUsingDocumento
+php artisan users:import-from-legacy
+
+
+me paro donde lo quiero clonar
+git clone https://github.com/Cardona81/My-Git-Project.git
+
+https://github.com/ProdiagnosticoDev/Epsilon.git
+
+cambiar de branch y moverme a ella
+
+$ git checkout -B fuature/lesson
+Switched to a new branch 'fuature/lesson'
+
+
+git add . 
+git add -A: or git add --all: This command stages all changes (including new, modified, and deleted files) across the entire repository, regardless of your current directory. It is useful when you want to stage all changes from anywhere within the repository.
+
+
+git commit
+git push

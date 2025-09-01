@@ -1,0 +1,32 @@
+
+To add all the changes you've made:
+
+git add .
+
+To commit them:
+
+git commit -m "MY MESSAGE HERE" #-m is the message flag
+
+You can put those steps together like this:
+
+git commit -a -m "MY MESSAGE HERE"
+
+To push your committed changes from your local repository to your remote repository:
+
+git push origin master
+
+You might have to type in your username/password for github after this. Here's a good primer on using git. A bit old, but it covers what's going on really well.
+
+
+-- 
+
+git init
+git add .
+git commit -m "Initial commit"
+git remote add origin https://github.com/ProdiagnosticoDev/Epsilon2.git
+git push -u origin master  |  -u  para crearla si no existe
+
+
+-- cambiar a branch 
+
+git checkout master

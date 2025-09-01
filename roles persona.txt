@@ -1,0 +1,11 @@
+php artisan tinker
+>>> $doc = '71375405';
+>>> $u = \App\Models\User::where('documento',$doc)->first();
+>>> $u?->id;
+>>> $u?->getRoleNames();            // what the user has now in Laravel
+>>> DB::table('model_has_roles')->where('model_id',$u->id)->pluck('role_id');
+>>> DB::table('roles')->whereIn('id', DB::table('model_has_roles')->where('model_id',$u->id)->pluck('role_id'))->pluck('name');
+
+
+
+//EH : 1042767485
