@@ -30,7 +30,9 @@ class DatabaseSeeder extends Seeder
             // TipoPrioridad::class,
             // EstadoSolicitudTable::class
             // CrearTipoSolicitudTable::class
-            CrearTablaServicio::class
+            // CrearTablaServicio::class
+            // CargarListaEquiposBiomedicos::class
+            CargarCategoriasDanioEquipos::class
         ]);
     }
 }
