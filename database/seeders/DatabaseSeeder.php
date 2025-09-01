@@ -32,7 +32,9 @@ class DatabaseSeeder extends Seeder
             // CrearTipoSolicitudTable::class
             // CrearTablaServicio::class
             // CargarListaEquiposBiomedicos::class
-            CargarCategoriasDanioEquipos::class
+            // CargarCategoriasDanioEquipos::class
+            // CategoriaSolicitudes::class
+            CrearTablasubcategoriaSolicitudes::class
         ]);
     }
 }
