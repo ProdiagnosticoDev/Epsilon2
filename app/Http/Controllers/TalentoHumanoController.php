@@ -17,9 +17,23 @@ use Illuminate\View\View;
 use Illuminate\Validation\Rules;
 use Illuminate\Validation\Rules\Password;
 use Yajra\DataTables\Facades\DataTables;
+use Illuminate\Support\Facades\Auth;
 
 class TalentoHumanoController extends Controller
 {    
+
+    /*
+    if (Auth::check()) {
+        $user   = Auth::user();   // App\Models\User
+        $id     = $user->id;
+        $email  = $user->email;
+        $nombre = $user->name;
+
+        // Cualquier otro campo de tu tabla users:
+        $doc    = $user->documento;
+        $grupo  = $user->id_grupo_empleado;
+    } 
+    */
     
     public function create(): View
     {
@@ -101,6 +115,8 @@ class TalentoHumanoController extends Controller
 
     public function update(Request $request, User $usuario)
     {
+
+        dd($request);
             $validated = $request->validate([
                     'nombre_m'   => ['required','string','max:255'],
                     'email_m'    => [
@@ -150,9 +166,9 @@ class TalentoHumanoController extends Controller
                 }
 
                 $usuario->update($data);
-
+                
               //  return back()->with('status', 'Usuario actualizado correctamente.');
-                return redirect()->back()->with('success', 'Usuario registrado exitosamente !');
+                return redirect()->back()->with('success', 'Usuario actualizado exitosamente !'  );
     }
 
     public function update_state(Request $request, User $usuario){
@@ -166,7 +182,7 @@ class TalentoHumanoController extends Controller
             $usuario->save();
 
             return response()->json([
-                'message' => 'Actualizamos exitosamente el estado del usuario !',
+                'message' => 'Actualizamos exitosamente el estado del usuario !!!!',
                 'estado'  => $usuario->estado,
             ]);
  

@@ -12,7 +12,8 @@
                     <div class="col-sm-6">
                         <!--h3 class="mb-0">Crear usuario</h3--> 
                         <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#crearUsuario">Crear
-                            Usuario</button>
+                            Usuario</button><br>
+                           
                     </div>
                     <!--div class="col-sm-6">
                         <ol class="breadcrumb float-sm-end">

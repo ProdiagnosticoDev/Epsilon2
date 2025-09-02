@@ -12,7 +12,12 @@
                     <div class="col-sm-6">
                         <!--h3 class="mb-0">Crear usuario</h3--> 
                         <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#crearUsuario">Crear
-                            Usuario</button>
+                            Usuario</button><br>
+                           {{--   @auth
+                                ID: {{ auth()->id() }} <br>
+                                Email: {{ auth()->user()->email }} <br>
+                                Nombre: {{ auth()->user()->name }}
+                            @endauth --}}
                     </div>
                     <!--div class="col-sm-6">
                         <ol class="breadcrumb float-sm-end">

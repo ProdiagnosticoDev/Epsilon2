@@ -227,7 +227,7 @@ $(document).on('submit', '#frmEditarUsuario', function (e) {
     },
 
     success: function (json) {
-      notie?.alert({ type: 'success', text: json?.message || 'Usuario actualizado exitosamente !', time: 3 });
+      notie?.alert({ type: 'success', text: json?.message || 'Usuario actualizado exitosamente !!', time: 3 });
       // Si prefieres no recargar toda la página:
       // DataTable.tables({ api:true }).ajax.reload(null, false);
       window.location.reload();
