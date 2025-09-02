@@ -21,7 +21,7 @@ class DatabaseSeeder extends Seeder
             'email' => 'test@example.com',
         ]);*/
 
-        $this->call([ // para probar comndao global . Se pueden agregar mas clases abajo , separadas por coma 
+        $this->call([ // para probar comando  global . Se pueden agregar mas clases abajo , separadas por coma 
             // TipoDocumentoTable::class, 
             // GrupoEmpleadoTable::class, 
             // TipoCargoTable::class,
@@ -34,7 +34,7 @@ class DatabaseSeeder extends Seeder
             // CargarListaEquiposBiomedicos::class
             // CargarCategoriasDanioEquipos::class
             // CategoriaSolicitudes::class
-            SubcategoriaDetallesTable::class
+            // SubcategoriaDetallesTable::class
         ]);
     }
 }
