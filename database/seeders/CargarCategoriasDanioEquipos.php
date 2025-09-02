@@ -35,7 +35,7 @@ class CargarCategoriasDanioEquipos extends Seeder
 
             ];
 
-            DB::table('categoria_danio_equipo')->upsert(
+        DB::table('categoria_danio_equipo')->upsert(
             $rows,
             //['idservicio'],                            // conflict key
             ['id', 'descripcion', 'created_at', 'updated_at'] // columns to update
