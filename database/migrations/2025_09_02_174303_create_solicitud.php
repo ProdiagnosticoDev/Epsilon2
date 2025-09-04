@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('solicitud', function (Blueprint $table) {
             $table->id('idsolicitud');
-            $table->foreignId('idseede') //FK sede
+            $table->foreignId('idsede') //FK sede
                 ->nullable()
                 ->constrained('sede', 'idsede')
                 ->nullOnDelete();    
@@ -24,6 +24,10 @@ return new class extends Migration
             $table->text('desc_requerimiento');
             $table->date('fechahora_solicitud');            
             $table->date('fechahora_visita');
+               $table->foreignId('idestado_solicitud') // FK estado solicitud
+                ->nullable()
+                ->constrained('estado_solicitud', 'idestado_solicitud')
+                ->nullOnDelete(); 
             $table->text('asunto');
             $table->foreignId('idfuncionario') // FK users
                 ->nullable()
@@ -43,21 +47,25 @@ return new class extends Migration
             $table->foreignId('idprioridad') // FK prioridad
                 ->nullable()
                 ->constrained('tipo_prioridad', 'idprioridad')
+                ->nullOnDelete();  
+            $table->foreignId('id_tiposolicitud') // FK estado compra
+                ->nullable()
+                ->constrained('tipo_solicitud', 'id_tiposolicitud')
                 ->nullOnDelete();
-            $table->foreignId('id_estado_compra') // FK estado compra
+                $table->foreignId('id_estadocompra') // FK estado compra
                 ->nullable()
                 ->constrained('estadocompra', 'id_estadocompra')
                 ->nullOnDelete();
-            $table->integer('id_presupuesto');            
+            $table->integer('id_presupuesto');
+            $table->foreignId('idservicio') //FK sede
+                ->nullable()
+                ->constrained('servicio', 'idservicio')
+                ->nullOnDelete();       
+            $table->text('porque');     
             $table->foreignId('id_referencia') // FK equipos biomedicos
                 ->nullable()
                 ->constrained('equipos_biomedicos', 'id_referencia')
-                ->nullOnDelete();
-            $table->text('porque');
-            $table->foreignId('idservicio') // FK servicio
-                ->nullable()
-                ->constrained('servicio', 'idservicio')
-                ->nullOnDelete();
+                ->nullOnDelete();                  
             $table->text('monto');
             $table->integer('cantidad');
             $table->integer('solicitud_asociada');
