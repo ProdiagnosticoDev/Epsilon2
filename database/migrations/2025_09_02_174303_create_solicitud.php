@@ -24,7 +24,7 @@ return new class extends Migration
             $table->text('desc_requerimiento');
             $table->date('fechahora_solicitud');            
             $table->date('fechahora_visita');
-               $table->foreignId('idestado_solicitud') // FK estado solicitud
+            $table->foreignId('idestado_solicitud') // FK estado solicitud
                 ->nullable()
                 ->constrained('estado_solicitud', 'idestado_solicitud')
                 ->nullOnDelete(); 
