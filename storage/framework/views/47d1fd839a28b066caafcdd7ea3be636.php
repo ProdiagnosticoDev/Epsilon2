@@ -1,5 +1,5 @@
-@extends('plantilla')
-@section('content')
+
+<?php $__env->startSection('content'); ?>
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <main class="app-main" id="main" tabindex="-1">
@@ -12,7 +12,7 @@
 
                 <!--div class="col-sm-6">
                     <ol class="breadcrumb float-sm-end">
-                        <li class="breadcrumb-item"><a href="{{ url('/') }}">Inicio</a></li>
+                        <li class="breadcrumb-item"><a href="<?php echo e(url('/')); ?>">Inicio</a></li>
                     </ol>
                 </div-->
             </div>
@@ -31,11 +31,11 @@
                     <div class="card-header">
                         <div class="card-title"><b>Solicitudes Registradas</b></div>
                     </div>
-                    {{-- Este datatable es del lado del servidor, Se usa Yajra y su configuración se encuentra en el archivo app.js --}}
-                    <table id="tabla_gestion_solicitudes_sistemas" class="table table-striped table-hover align-middle w-100" data-ajax="{{ route('listar.solicitudes') }}">
+                    
+                    <table id="tabla_gestion_solicitudes_sistemas" class="table table-striped table-hover align-middle w-100" data-ajax="<?php echo e(route('listar.solicitudes')); ?>">
                     <thead>
                         <tr>
-                        <th></th> {{-- control column --}}
+                        <th></th> 
                         <th>#</th>
                         <th>Sede</th>     
                         <th>Asunto</th>     
@@ -83,7 +83,7 @@
             <!--end::App Content-->
     </main>
 
-{{-- edit roles --}}
+
 <div class="modal" id="editarRoles" tabindex="-1">
     <div class="modal-dialog modal-sm">
         <div class="modal-content">
@@ -93,7 +93,7 @@
             </div>
             <div class="modal-body">
                 <form method="POST" action="" class="needs-validation" id="formEditarRol" autocomplete="off">                    
-                    @method('PUT')
+                    <?php echo method_field('PUT'); ?>
                     <!--begin::Body-->
                     <div class="card-body">
                         <div class="row g-2">
@@ -119,7 +119,7 @@
     </div>
 </div>
 
-{{-- Crear rol --}}
+
 <div class="modal" id="crearRol" tabindex="-1">
     <div class="modal-dialog modal-sm">
         <div class="modal-content">
@@ -127,8 +127,8 @@
                 <h4 class="modal-title">Crear Rol</h4>
             </div>
             <div class="modal-body">
-                <form method="POST" action="{{-- route('users.roles.store' ) --}}" class="needs-validation" id="crearRol" autocomplete="off">                    
-                    @csrf
+                <form method="POST" action="" class="needs-validation" id="crearRol" autocomplete="off">                    
+                    <?php echo csrf_field(); ?>
                     <!--begin::Body-->
                     <div class="card-body">
                         <div class="row g-2">
@@ -154,4 +154,5 @@
 </div>
 
 
-@endsection
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('plantilla', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?><?php /**PATH E:\Documentos\LARAVEL\EpsilonV2-VersionControl\Epsilon2\resources\views/paginas/Sistemas/gestion_solicitudes.blade.php ENDPATH**/ ?>

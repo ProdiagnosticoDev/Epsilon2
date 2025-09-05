@@ -5,6 +5,7 @@ use App\Http\Controllers\CrearUsuarioController;
 use App\Http\Controllers\GestionUsuariosController;
 use App\Http\Controllers\GrupoEmpleadoController;
 use App\Http\Controllers\ModuloUsuarioController;
+use App\Http\Controllers\SolicitudController;
 use App\Http\Controllers\TalentoHumanoController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RolesController;
@@ -99,8 +100,11 @@ Route::middleware(['auth','verified','estado',
 
     // rutas solicitudes
 
-    Route::get('/gestion_solicitudes.blade', [RolesController::class, 'index']) // ruta pra mostrar la vista
-        ->name('gestion.solicitudes.index');
+    Route::get('/gestion_solicitudes', [SolicitudController::class, 'create'])
+        ->name('gestion.solicitud');
+
+    Route::get('/gestion_solicitudes/data', [SolicitudController::class, 'list'])
+        ->name('listar.solicitudes');
 
 
 });

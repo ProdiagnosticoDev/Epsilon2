@@ -193,3 +193,55 @@ document.addEventListener('DOMContentLoaded', () => {
   document.addEventListener('shown.bs.modal', () => { dt.columns.adjust(); dt.responsive.recalc(); });
   document.addEventListener('shown.bs.tab', () => { dt.columns.adjust(); dt.responsive.recalc(); });
 });
+
+
+
+
+// tabla gestion solicitudes sistemas
+document.addEventListener('DOMContentLoaded', () => {
+  const el = document.querySelector('#tabla_gestion_solicitudes_sistemas');
+  if (!el) return;
+
+  const ajaxUrl = el.dataset.ajax;
+  if (!ajaxUrl) { console.error('Missing data-ajax on #tabla_gestion_solicitudes_sistemas'); return; }
+
+  const dt = new DataTable(el, {
+    processing: true,
+    serverSide: true,
+    ajax: { url: ajaxUrl },
+
+    // use una columna de control para el icono de expansion    
+    // responsive: { details: { type: 'column', target: 0 } }, 
+    responsive: {
+      details: {
+        type: 'column',
+        target: 'td.dtr-control, td.dtr-aux' // ← multiple selectors = multiple controls
+      }
+    },
+      columnDefs: [
+    { targets: 0, className: 'dtr-control', orderable: false }, // primer acolumna muestra el ícnono 
+    { targets: 1, className: 'dtr-aux' },                       // dar clic al nombre despliega el responsiveclicking “Nombre” also toggles
+    { targets: -1, orderable: false, searchable: false },       
+  ],
+    autoWidth: false,
+    language: {
+      // Usa el JSON oficial de i18n para DataTables v2
+      url: 'https://cdn.datatables.net/plug-ins/2.0.0/i18n/es-ES.json'
+      // (puedes subir a 2.0.8/2.3.x si prefieres; debe ser 2.x)
+    },
+
+    columns: [
+      { data: null, defaultContent: '', className: 'dtr-control', orderable: false }, // control
+      { data: 'idsolicitud', className: 'all' },                  
+      { data: 'asunto', className: 'min-tablet-l' },
+     // { data: 'fechahora_solicitud', className: 'min-tablet-l' },
+     // { data: 'idestado_solicitud', className: 'none' },
+      { data: 'actions', className: 'all', orderable: false, searchable: false },
+    ],
+    order: [[1, 'asc']], // porque la columna b es la columna de control
+  });
+
+  // ski la tabla empieza en una pestaña / modal
+  document.addEventListener('shown.bs.modal', () => { dt.columns.adjust(); dt.responsive.recalc(); });
+  document.addEventListener('shown.bs.tab', () => { dt.columns.adjust(); dt.responsive.recalc(); });
+});
