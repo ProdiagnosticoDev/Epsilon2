@@ -97,6 +97,12 @@ Route::middleware(['auth','verified','estado',
         ->name('roles.update');
 
 
+    // rutas solicitudes
+
+    Route::get('/gestion_solicitudes.blade', [RolesController::class, 'index']) // ruta pra mostrar la vista
+        ->name('gestion.solicitudes.index');
+
+
 });
 
 Route::get('/', function () {
