@@ -131,6 +131,7 @@ class CargarSolicitudesDesdeXLSSeeder extends Seeder
                 'desc_requerimiento'      => $this->toStr($get('desc_requerimiento')),
                 'fechahora_solicitud'     => $fSolicitud,
                 'fechahora_visita'        => $fVisita,
+                'idestado_solicitud'      => $this->toIntOrNull($get('idestado_solicitud')),
                 'asunto'                  => $this->toStr($get('asunto')),
                 'idfuncionario'           => $idFuncionario,
                 'idsatisfaccion'          => $this->toIntOrNull($get('idsatisfaccion')),
