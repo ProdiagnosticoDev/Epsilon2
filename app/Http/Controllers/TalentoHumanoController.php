@@ -116,7 +116,7 @@ class TalentoHumanoController extends Controller
     public function update(Request $request, User $usuario)
     {
 
-        dd($request);
+        //dd($request);
             $validated = $request->validate([
                     'nombre_m'   => ['required','string','max:255'],
                     'email_m'    => [
@@ -166,9 +166,16 @@ class TalentoHumanoController extends Controller
                 }
 
                 $usuario->update($data);
+
+        
                 
               //  return back()->with('status', 'Usuario actualizado correctamente.');
-                return redirect()->back()->with('success', 'Usuario actualizado exitosamente !'  );
+              //  return redirect()->back()->with('success', 'Usuario actualizado exitosamente !'  ); // actual
+
+                 return response()->json([
+                    'ok'      => true,
+                    'message' => 'Usuario actualizado correctamente !',
+                ], 200);
     }
 
     public function update_state(Request $request, User $usuario){

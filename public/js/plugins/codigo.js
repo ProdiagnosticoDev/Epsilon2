@@ -200,6 +200,8 @@ $(document).on('submit', '#frmEditarUsuario', function (e) {
 });
 */ //tira 405
 
+
+
 $(document).on('submit', '#frmEditarUsuario', function (e) {
   e.preventDefault();
 
