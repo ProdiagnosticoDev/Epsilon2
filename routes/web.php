@@ -12,7 +12,7 @@ use App\Http\Controllers\RolesController;
 use App\Http\Controllers\TipoDocumentoController;
 use Illuminate\Support\Facades\Route;
 
-/*
+/*  
 Route::get('/paginas.principal', function () {
     return view('paginas.principal');
 })->middleware(['auth', 'verified'])->name('paginas.principal');
