@@ -36,17 +36,16 @@
                     <thead>
                         <tr>
                         <th></th> 
-                        <th>#</th>
-                        <th>Sede</th>     
-                        <th>Asunto</th>     
-                        <th>Funcionario</th>     
-                        <th>Fecha Solicitud</th>     
-                        <th>Fecha Cierre</th>     
-                        <th>Prioridad</th>     
-                        <th>Categoría</th>     
-                        <th>Estado</th>                                
-                        <th>Asignar</th>     
-                        <th>Acciones</th>                        
+                            <th>#</th>
+                            <th>Sede</th>     
+                            <th>Asunto</th>     
+                            <th>Funcionario</th>     
+                            <th>Fecha Solicitud</th>     
+                            <th>Fecha Cierre</th>     
+                            <th>Prioridad</th>     
+                            <th>Categoría</th>     
+                            <th>Estado</th>                                                        
+                            <th>Acciones</th>                        
                         </tr>
                     </thead>
                     </table>            

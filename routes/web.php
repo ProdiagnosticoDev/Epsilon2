@@ -100,12 +100,18 @@ Route::middleware(['auth','verified','estado',
 
     // rutas solicitudes
 
-    Route::get('/gestion_solicitudes', [SolicitudController::class, 'create'])
-        ->name('gestion.solicitud');
-
     Route::get('/gestion_solicitudes/data', [SolicitudController::class, 'list'])
         ->name('listar.solicitudes');
 
+    Route::get('/gestion_solicitudes/{id}', [SolicitudController::class, 'create'])
+        ->name('mostrar.solicitud');
+
+    Route::get('/gestion_solicitudes', [SolicitudController::class, 'create'])
+        ->name('gestion.solicitud');
+/*
+     Route::get('/crear_usuarios/data', [TalentoHumanoController::class, 'obtenerUsuariosDatatable'])
+        ->name('usuarios.list');
+*/
 
 });
 

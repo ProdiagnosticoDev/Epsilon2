@@ -20,7 +20,7 @@ class SolicitudController extends Controller
 
     public function list(){
 
-            $sql = "SELECT so.idsolicitud,so.asunto, so.desc_requerimiento, so.fechahora_solicitud,so.idestado_solicitud, so.horasolicitud, so.fechahora_visita, so.horavisita, sa.desc_satisfaccion, so.idsatisfaccion,s.descsede, est.descestado_solicitud, us.name as  nombre, so.idfuncionario, tp.desc_prioridad , us2.name as asignado_a, so.idfuncionarioresponde, cs.descripcion as categoria_descripcion
+            $sql = "SELECT so.idsolicitud,  s.descsede as sede , so.asunto, so.fechahora_solicitud,so.idestado_solicitud, so.horasolicitud, so.fechahora_visita, so.horavisita, sa.desc_satisfaccion, so.idsatisfaccion,s.descsede, est.descestado_solicitud, us.name as  nombre, so.idfuncionario, tp.desc_prioridad , us2.name as asignado_a, so.idfuncionarioresponde, cs.descripcion as categoria_descripcion
             from solicitud so
             inner join sede s on s.idsede = so.idsede
             inner join estado_solicitud est on est.idestado_solicitud = so.idestado_solicitud
@@ -29,7 +29,7 @@ class SolicitudController extends Controller
             inner join tipo_prioridad tp on tp.idprioridad = so.idprioridad
             left join categorias_solicitudes cs on cs.id = so.id_categoria
             left join satisfaccion sa on sa.idsatisfaccion = so.idsatisfaccion
-                WHERE so.idarea=1 AND fechahora_solicitud BETWEEN '2025-06-01' AND '2025-06-20'";
+            WHERE so.idarea=1 AND fechahora_solicitud BETWEEN '2025-06-01' AND '2025-06-20' ";
 
         $q = DB::table(DB::raw("({$sql}) as sub"));
        // return DataTables::of($q)->toJson();
