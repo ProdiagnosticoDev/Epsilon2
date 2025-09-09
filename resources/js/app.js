@@ -220,7 +220,7 @@ document.addEventListener('DOMContentLoaded', () => {
     },
       columnDefs: [
     { targets: 0, className: 'dtr-control', orderable: false }, // primer acolumna muestra el ícnono 
-    { targets: 1, className: 'dtr-aux' },                       // dar clic al nombre despliega el responsiveclicking “Nombre” also toggles
+    { targets: 4, className: 'dtr-aux' },                       // dar clic al nombre despliega el responsiveclicking “Nombre” also toggles
     { targets: -1, orderable: false, searchable: false },       
   ],
     autoWidth: false,
@@ -232,11 +232,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
     columns: [
       { data: null, defaultContent: '', className: 'dtr-control', orderable: false }, // control
-      { data: 'idsolicitud', className: 'all' },                  
-      { data: 'asunto', className: 'min-tablet-l' },
-     // { data: 'fechahora_solicitud', className: 'min-tablet-l' },
-     // { data: 'idestado_solicitud', className: 'none' },
-      { data: 'actions', className: 'all', orderable: false, searchable: false },
+      { data: 'idsolicitud', className: 'all' },          
+      { data: 'sede', className: 'min-tablet' },   
+      { data: 'asunto', className: 'min-tablet' },   
+      { data: 'nombre', className: 'min-tablet' },   
+      { data: 'fechahora_solicitud', className: 'min-tablet' },   
+      { data: 'fechahora_visita', className: 'min-tablet' },   
+      { data: 'desc_prioridad', className: 'min-tablet' },      
+      { data: 'categoria_descripcion', className: 'min-tablet-l' },
+      { data: 'descestado_solicitud', className: 'none' },
+   // { data: 'cargo', className: 'min-desktop' },
+      { data: 'actions', className: 'none', orderable: false, searchable: false },
     ],
     order: [[1, 'asc']], // porque la columna b es la columna de control
   });

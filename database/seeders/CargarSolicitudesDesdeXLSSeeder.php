@@ -111,19 +111,22 @@ class CargarSolicitudesDesdeXLSSeeder extends Seeder
             $idFuncionario     = $this->mapDocumentoToUserId($get('idfuncionario'), $usersByDocumento, 'idfuncionario', $lineNo);
             $idFuncionarioResp = $this->mapDocumentoToUserId($get('idfuncionarioresponde'), $usersByDocumento, 'idfuncionarioresponde', $lineNo);
 
-            // Fechas (Excel puede traer números de serie o cadenas)
-            $fSolicitud  = $this->excelDateToYmd($get('fechahora_solicitud'))   ?? '1970-01-01';
-            $fVisita     = $this->excelDateToYmd($get('fechahora_visita'))      ?? '1970-01-01';
-            $fFueraServ  = $this->excelDateToYmd($get('fuera_servicio'))        ?? '1970-01-01';
-            $fFechaFuera = $this->excelDateToYmd($get('fecha_fuera_servicio'))  ?? '1970-01-01';
-            $fPuesta     = $this->excelDateToYmd($get('fecha_puesta_marcha'))   ?? '1970-01-01';
-            $fEntrega    = $this->excelDateToYmd($get('fecha_entrega'))         ?? '1970-01-01';
+            // ===== Fechas/Horas =====
+            $fSolicitud   = $this->excelDateToYmd($get('fechahora_solicitud')) ?? null;
+            // OJO: en Excel viene como "fecha_hora_visita"
+            $fVisita      = $this->excelDateToYmd($get('fecha_hora_visita')) ?? null;
+            // Flag/booleano (puede ser null)
+            $fueraServFlg = $this->toIntOrNull($get('fuera_servicio'));
+            // La fecha correcta es "fecha_fuera_servicio" (no "fuera_servicio")
+            $fFechaFuera  = $this->excelDateToYmd($get('fecha_fuera_servicio')) ?? null;
+            $fPuesta      = $this->excelDateToYmd($get('fecha_puesta_marcha')) ?? null;
+            $fEntrega     = $this->excelDateToYmd($get('fecha_entrega')) ?? null;
 
-            // Horas
-            $hSolicitud  = $this->excelTimeToHis($get('horasolicitud')) ?? '00:00:00';
-            $hVisita     = $this->excelTimeToHis($get('horavisita'))    ?? '00:00:00';
+            // Horas (conservan NULL si la celda está vacía)
+            $hSolicitud   = $this->excelTimeToHis($get('horasolicitud')) ?? null;
+            $hVisita      = $this->excelTimeToHis($get('horavisita'))    ?? null;
 
-            // Construir inserción (sin defaults 0 para posibles FKs)
+            // Construir inserción
             $ins = [
                 'idsolicitud'             => $idsolicitud,
                 'idsede'                  => $this->toIntOrNull($get('idsede')),
@@ -145,14 +148,14 @@ class CargarSolicitudesDesdeXLSSeeder extends Seeder
                 'id_referencia'           => $this->toIntOrNull($get('id_referencia')),
                 'porque'                  => $this->toStr($get('porque')),
                 'idservicio'              => $this->toIntOrNull($get('idservicio')),
-                'monto'                   => $this->toStr($get('monto')), // text NOT NULL → vacío ok
-                'cantidad'                => $this->toIntDefault($get('cantidad'), 0), // NOT NULL
-                'solicitud_asociada'      => $this->toIntDefault($get('solicitud_asociada'), 0), // NOT NULL
-                'fuera_servicio'          => $fFueraServ,   // NOT NULL (si tu esquema lo exige)
-                'fecha_fuera_servicio'    => $fFechaFuera,  // NOT NULL
-                'fecha_puesta_marcha'     => $fPuesta,      // NOT NULL
+                'monto'                   => $this->toStr($get('monto')),
+                'cantidad'                => $this->toIntDefault($get('cantidad'), 0),
+                'solicitud_asociada'      => $this->toIntDefault($get('solicitud_asociada'), 0),
+                'fuera_servicio'          => $fueraServFlg,            // puede ser NULL
+                'fecha_fuera_servicio'    => $fFechaFuera,             // puede ser NULL o fecha
+                'fecha_puesta_marcha'     => $fPuesta,
                 'categoria_danio'         => $this->toIntOrNull($get('categoria_danio')),
-                'fecha_entrega'           => $fEntrega,     // NOT NULL
+                'fecha_entrega'           => $fEntrega,
                 'id_categoria'            => $this->toIntOrNull($get('id_categoria')),
                 'id_subcategoria'         => $this->toIntOrNull($get('id_subcategoria')),
                 'id_subcategoria_detalle' => $this->toIntOrNull($get('id_subcategoria_detalle')),
@@ -168,8 +171,8 @@ class CargarSolicitudesDesdeXLSSeeder extends Seeder
             // Validación de FKs (corrige 0->NULL y chequea existencia)
             [$ins, $fkErrors] = $this->validateAndFixForeignKeys($ins, $lineNo, $idsolicitud);
             if (!empty($fkErrors)) {
-                $this->command->error("❌ Fila Excel {$lineNo} (idsolicitud: {$idsolicitud}): Se omite por FK(s) obligatoria(s) inexistente(s): " . implode(' | ', $fkErrors));
-                continue; // saltar esta fila
+                $this->command->error("Fila Excel {$lineNo} (idsolicitud: {$idsolicitud}): Se omite por FK(s) obligatoria(s) inexistente(s): " . implode(' | ', $fkErrors));
+                break;
             }
 
             $batch[] = $ins;
@@ -400,7 +403,9 @@ class CargarSolicitudesDesdeXLSSeeder extends Seeder
 
     private function normKey(?string $k): string
     {
-        return strtolower(trim((string)$k));
+        // Normaliza: minúsculas + sin espacios ni guiones bajos
+        $k = strtolower(trim((string)$k));
+        return preg_replace('/[\s_]+/', '', $k);
     }
 
     private function isBlankRow(?array $row): bool
