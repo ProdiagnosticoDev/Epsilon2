@@ -24,6 +24,29 @@
         <!--begin::App Content-->
         <div class="app-content">
             <!--begin::Container-->
+            
+            <div class="container-fluid">
+                <div class="card card-info card-outline mb-3">
+                    <form>
+                        <div class="row g-2">
+                      
+                            <div class="row g-2 mb-3">
+                            <div class="col-auto">
+                                <input type="date" id="f-start" class="form-control form-control-sm" placeholder="Desde">
+                            </div>
+                            <div class="col-auto">
+                                <input type="date" id="f-end" class="form-control form-control-sm" placeholder="Hasta">
+                            </div>
+                            <div class="col-auto">
+                                <button id="btn-apply" class="btn btn-sm btn-primary">Filtrar</button>
+                                <button id="btn-clear" class="btn btn-sm btn-outline-secondary">Limpiar</button>
+                            </div>
+                            </div>
+                        </div>
+                        <div>&nbsp;</div>
+                  </form>
+                </div>
+            </div>
             <div class="container-fluid">
                 <!--begin::Row-->
                 <div class="card card-info card-outline mb-4">
@@ -35,7 +58,7 @@
                     <table id="tabla_gestion_solicitudes_sistemas" class="table table-striped table-hover align-middle w-100" data-ajax="{{ route('listar.solicitudes') }}">
                     <thead>
                         <tr>
-                        <th></th> {{-- control column --}}
+                            <th></th> {{-- control column --}}
                             <th>#</th>
                             <th>Sede</th>     
                             <th>Asunto</th>     
