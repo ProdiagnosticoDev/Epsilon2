@@ -3,9 +3,9 @@
   <!--begin::Sidebar Brand-->
   <div class="sidebar-brand">
     <!--begin::Brand Link-->
-    <a href="{{ url('/') }}" class="brand-link">
+    <a href="<?php echo e(url('/')); ?>" class="brand-link">
       <!--begin::Brand Image-->
-      <!--img src="{{ url('/') }}/assets/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image opacity-75 shadow"-->
+      <!--img src="<?php echo e(url('/')); ?>/assets/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image opacity-75 shadow"-->
       <i class="nav-icon bi bi-wifi"></i>
       <!--end::Brand Image-->
       <!--begin::Brand Text-->
@@ -28,23 +28,23 @@
           aria-label="Main navigation" data-accordion="false" id="navigation">
           <li class="nav-item">
             <a href="#" class="nav-link">
-              @role('Talento Humano|Administrador')
+              <?php if (\Illuminate\Support\Facades\Blade::check('role', 'Talento Humano|Administrador')): ?>
               <i class="nav-icon bi bi-people-fill"></i>
               <p>
                 Talento humano
                 <i class="nav-arrow bi bi-chevron-right"></i>
               </p>
-              @endrole
+              <?php endif; ?>
             </a>
             <ul class="nav nav-treeview" role="navigation" aria-label="Navigation 4">
               <li class="nav-item">
-                <a href="{{ url('/crear_usuarios') }}" class="nav-link">
+                <a href="<?php echo e(url('/crear_usuarios')); ?>" class="nav-link">
                   <i class="nav-icon bi bi-circle"></i>
                   <p>Crear Usuarios</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{ url('/generar_prorrogas') }}" class="nav-link">
+                <a href="<?php echo e(url('/generar_prorrogas')); ?>" class="nav-link">
                   <i class="nav-icon bi bi-circle"></i>
                   <p>Generar Prórrogas </p>
                 </a>
@@ -189,19 +189,19 @@
                       <p>Simple Tables</p>
                     </a-->
               <li class="nav-item">
-                <a href="{{ url('/gestion_roles') }}" class="nav-link">
+                <a href="<?php echo e(url('/gestion_roles')); ?>" class="nav-link">
                   <i class="nav-icon bi bi-circle"></i>
                   <p>Gestión de Usuarios</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{ url('/crear_roles') }}" class="nav-link">
+                <a href="<?php echo e(url('/crear_roles')); ?>" class="nav-link">
                   <i class="nav-icon bi bi-circle"></i>
                   <p>Gestión roles</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{ url('/gestion_solicitudes') }}" class="nav-link">
+                <a href="<?php echo e(url('/gestion_solicitudes')); ?>" class="nav-link">
                   <i class="nav-icon bi bi-circle"></i>
                   <p>Gestión Solicitudes</p>
                 </a>
@@ -297,4 +297,4 @@
     </div>
   </div>
   <!--end::Sidebar Wrapper-->
-</aside>
+</aside><?php /**PATH C:\xampp\htdocs\Epsilon2-Desarrollo2PDX\Epsilon2\resources\views/modulos/sidebar.blade.php ENDPATH**/ ?>

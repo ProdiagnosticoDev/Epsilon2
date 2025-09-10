@@ -10,6 +10,7 @@ use App\Http\Controllers\TalentoHumanoController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RolesController;
 use App\Http\Controllers\TipoDocumentoController;
+use App\Http\Controllers\ProrrogasController;
 use Illuminate\Support\Facades\Route;
 
 /*  
@@ -54,6 +55,19 @@ Route::middleware(['auth','verified','estado',
 
     Route::get('/crear_usuarios/data', [TalentoHumanoController::class, 'obtenerUsuariosDatatable'])
         ->name('usuarios.list'); // Ruta para el nuevo datatable. Si se va a utililizar el datatable convencional de jquery debe comentar esta ruta 
+
+
+    /**Ruta cartas prórroga - no prórroga **/
+
+
+    Route::get('/generar_prorrogas', [ProrrogasController::class, 'create'])
+    ->name('generar_prorrogas.create');
+
+        Route::get('/generar_prorrogas/data', [ProrrogasController::class, 'obtenerUsuariosDatatable'])
+        ->name('cartas.list');
+
+        Route::get('/generate-pdf', [ProrrogasController::class, 'generatePDF'])
+        ->name('pdf.generate');        
 });
 
     // Rutas sistemas
