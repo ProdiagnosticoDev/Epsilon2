@@ -32,10 +32,10 @@
                       
                             <div class="row g-2 mb-3">
                             <div class="col-auto">
-                                <input type="date" id="f-start" class="form-control form-control-sm" placeholder="Desde">
+                                <input type="date" id="f-start" class="form-control form-control-sm" placeholder="Desde" required="">
                             </div>
                             <div class="col-auto">
-                                <input type="date" id="f-end" class="form-control form-control-sm" placeholder="Hasta">
+                                <input type="date" id="f-end" class="form-control form-control-sm" placeholder="Hasta" required="">
                             </div>
                             <div class="col-auto">
                                 <button id="btn-apply" class="btn btn-sm btn-primary">Filtrar</button>

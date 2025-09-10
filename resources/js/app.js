@@ -195,6 +195,8 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
+
+// tabla gestion solicitudes sistemas
 document.addEventListener('DOMContentLoaded', () => {
   const el = document.querySelector('#tabla_gestion_solicitudes_sistemas');
   if (!el) return;
@@ -256,14 +258,13 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
-// tabla gestion solicitudes sistemas
-/*
+//tabla de cartas
 document.addEventListener('DOMContentLoaded', () => {
-  const el = document.querySelector('#tabla_gestion_solicitudes_sistemas');
+  const el = document.querySelector('#tabla_usuarios_cartas');
   if (!el) return;
 
   const ajaxUrl = el.dataset.ajax;
-  if (!ajaxUrl) { console.error('Missing data-ajax on #tabla_gestion_solicitudes_sistemas'); return; }
+  if (!ajaxUrl) { console.error('Missing data-ajax on #tabla_usuarios_cartas'); return; }
 
   const dt = new DataTable(el, {
     processing: true,
@@ -292,17 +293,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     columns: [
       { data: null, defaultContent: '', className: 'dtr-control', orderable: false }, // control
-      { data: 'idsolicitud', className: 'all' },          
-      { data: 'sede', className: 'min-tablet' },   
-      { data: 'asunto', className: 'min-tablet' },   
-      { data: 'nombre', className: 'min-tablet' },   
-      { data: 'fechahora_solicitud', className: 'min-tablet' },   
-      { data: 'fechahora_visita', className: 'min-tablet' },   
-      { data: 'desc_prioridad', className: 'min-tablet' },      
-      { data: 'categoria_descripcion', className: 'min-tablet-l' },
-      { data: 'descestado_solicitud', className: 'none' },
-   // { data: 'cargo', className: 'min-desktop' },
-      { data: 'actions', className: 'none', orderable: false, searchable: false },
+      { data: 'id', className: 'all' },          
+      { data: 'TipoDocumento', className: 'min-tablet' },   
+      { data: 'documento', className: 'none' },         
+      { data: 'name', className: 'min-tablet-l' },
+      { data: 'email', className: 'min-desktop' },
+      { data: 'cargo', className: 'min-desktop' },
+      { data: 'actions'},
     ],
     order: [[1, 'asc']], // porque la columna b es la columna de control
   });
@@ -311,5 +308,3 @@ document.addEventListener('DOMContentLoaded', () => {
   document.addEventListener('shown.bs.modal', () => { dt.columns.adjust(); dt.responsive.recalc(); });
   document.addEventListener('shown.bs.tab', () => { dt.columns.adjust(); dt.responsive.recalc(); });
 });
-
-*/
