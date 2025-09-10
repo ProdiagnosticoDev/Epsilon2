@@ -38,6 +38,13 @@
                                 <input type="date" id="f-end" class="form-control form-control-sm" placeholder="Hasta" required="">
                             </div>
                             <div class="col-auto">
+                                <select name="estado_solicitud" class="form-select">
+                                    @foreach($estadoOptions as $id => $nombre)
+                                        <option value="{{ $id }}">{{ $nombre }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="col-auto">
                                 <button id="btn-apply" class="btn btn-sm btn-primary">Filtrar</button>
                                 <button id="btn-clear" class="btn btn-sm btn-outline-secondary">Limpiar</button>
                             </div>
