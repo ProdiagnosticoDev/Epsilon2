@@ -28,7 +28,7 @@ class SolicitudController extends Controller
         $endDT   = $end   ? Carbon::parse($end)->endOfDay()   : null;
 
         // Construimos el query base con Query Builder (evita concatenar SQL)
-       /* $q = DB::table('solicitud as so')
+        /* $q = DB::table('solicitud as so')
             ->join('sede as s', 's.idsede', '=', 'so.idsede')
             ->join('estado_solicitud as est', 'est.idestado_solicitud', '=', 'so.idestado_solicitud')
             ->join('users as us', 'us.id', '=', 'so.idfuncionario')
