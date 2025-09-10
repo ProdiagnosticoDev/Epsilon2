@@ -105,16 +105,169 @@
             <!--end::App Content-->
     </main>
 
-{{-- edit roles --}}
-<div class="modal" id="editarRoles" tabindex="-1">
+{{-- gestionar solicitud --}}
+<div class="modal" id="gestionarSolicitud" tabindex="-1">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <div class="modal-header big-info">
+                <!--div class="card-title">Datos Personales</div-->
+                <h4 class="modal-title">Gestionar Solicitud</h4>
+            </div>
+            <div class="modal-body">
+                <form method="POST" action="" class="needs-validation" id="formGestionarSolicitud" autocomplete="off">                    
+                    @method('PUT')
+                    <!--begin::Body-->
+                 <!--begin::Body-->
+                        <div class="card-body">
+                            <div class="row g-2">
+                                <!--begin::Col-->
+                                <div class="col-md-3">
+                                    <label for="validationCustom01" class="form-label">Solicitante
+                                        <span class="required-indicator sr-only"> (required)</span></label>
+                                    <select name="tipo_documento_m" id="tipo_documento_m" class="form-control tipo_documento" required="">
+                                        <option value="">-- Seleccione --</option>
+                                        <!--option value="1">Cédula de ciudadanía</option-->
+                    
+                                    </select>
+                                    <div class="valid-feedback">Looks good!</div>
+                                </div>
+                                <div class="col-md-3">
+                                    <label for="validationCustomUsername" class="form-label">Asunto
+                                        <span class="required-indicator sr-only"> (required)</span></label>
+                                    <div class="input-group has-validation">
+                                        <span class="input-group-text" id="inputGroupPrepend">#</span>
+                                        <input type="text" class="form-control" id="documento_m"
+                                            name="documento_m" aria-describedby="inputGroupPrepend" required=""
+                                            value="">
+                                        <div class="invalid-feedback">Ingresa el número de documento.</div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <label for="validationCustom01" class="form-label">Sede
+                                        <span class="required-indicator sr-only"> (required)</span></label>
+                                    <input type="text" class="form-control" id="nombre_m" name="nombre_m"
+                                        required="" value="Usuario De pruebas">
+                                    <div class="valid-feedback">Looks good!</div>
+                                </div>
+                                <div class="col-md-3">
+                                    <label for="validationCustom01" class="form-label">Área a quien solicita
+                                        <span class="required-indicator sr-only"> (required)</span></label>
+                                    <input type="date" class="form-control" id="fecha_nacimiento_m" name="fecha_nacimiento_m"
+                                        required="">
+                                    <div class="valid-feedback">Looks good!</div>
+                                </div>
+                            </div>
+                            <!--begin::Row-->
+                            <div class="row g-2">
+                                <!--begin::Col-->
+                                <div class="col-md-3">
+                                    <label for="validationCustom01" class="form-label">Fecha y hora solicitud
+                                        <span class="required-indicator sr-only"> (required)</span></label>
+                                    <input type="text" class="form-control" id="direccion_m" name="direccion_m"
+                                        required="" value="">
+                                    <div class="valid-feedback">Looks good!</div>
+                                </div>
+                                <!--end::Col-->
+                                <!--begin::Col-->
+                                <div class="col-md-3">
+                                    <label for="validationCustom01" class="form-label">Fecha y hora cierre
+                                        <span class="required-indicator sr-only"> (required)</span></label>
+                                    <div class="input-group has-validation">
+                                        <span class="input-group-text" id="inputGroupPrepend">#</span>
+                                        <input type="text" class="form-control" id="telefono_m"
+                                            name="telefono_m" aria-describedby="inputGroupPrepend" required=""
+                                            value="">
+                                        <div class="invalid-feedback">Ingresa el número de teléfono.</div>
+                                    </div>
+                                    <div class="valid-feedback">Looks good!</div>
+                                </div>
+                                <!--end::Col-->
+                                <!--begin::Col-->
+                                <div class="col-md-3">
+                                    <label for="validationCustom01" class="form-label">Prioridad
+                                        <span class="required-indicator sr-only"> (required)</span></label>
+                                    <input type="date" class="form-control" id="fecha_ingreso_m" name="fecha_ingreso_m"
+                                        required="">
+                                    <div class="valid-feedback">Looks good!</div>
+                                </div>
+                                <!--end::Col-->
+                                <div class="col-md-3">
+                                    <label for="validationCustom01" class="form-label">Tipo Solicitud
+                                        <span class="required-indicator sr-only"> (required)</span></label>
+                                    <select name="grupo_empleado_m" id="grupo_empleado_m" class="form-control" required="">
+                                        <!--option value="12">-- Practicante --</option-->
+                                        <option value="">-- Seleccione --</option>
+               
+                                    </select>
+                                    <div class="valid-feedback">Looks good!</div>
+                                </div>
+                                <!--end::Col-->
+                                <!--begin::Row-->
+                            </div>
+                            <!--begin::Row-->
+                            <div class="row g-2">
+                                <div class="col-md-3">
+                                    <label for="validationCustom01" class="form-label">Estado Solicitud
+                                        <span class="required-indicator sr-only"> (required)</span></label>
+                                    <div class="input-group has-validation">
+                                        <span class="input-group-text" id="inputGroupPrepend">$</span>
+                                        <input type="text" class="form-control" id="salario_m" name="salario_m"
+                                            aria-describedby="inputGroupPrepend" required="" value="0">
+                                        <div class="invalid-feedback">Ingresa el número de teléfono.</div>
+                                    </div>
+                                    <div class="valid-feedback">Looks good!</div>
+                                </div>
+                                <div class="col-md-3">
+                                    <label for="validationCustom01" class="form-label">Categoría
+                                        <span class="required-indicator sr-only"> (required)</span></label>
+                                    <div class="input-group has-validation">
+                                        <span class="input-group-text" id="inputGroupPrepend">$</span>
+                                        <input type="text" class="form-control" id="aux_transporte_m" name="aux_transporte_m"
+                                            aria-describedby="inputGroupPrepend" required=""
+                                            value="0">
+                                        <div class="invalid-feedback">Ingresa el número de teléfono.</div>
+                                    </div>
+                                    <div class="valid-feedback">Looks good!</div>
+                                </div>
+                                <div class="col-md-3">
+                                    <label for="validationCustom01" class="form-label">ANS
+                                        <span class="required-indicator sr-only"> (required)</span></label>
+                                    <select name="jefe_directo_m" id="jefe_directo_m" class="form-control">
+                                        <!--option value="2">Usuario de pruebas</option-->
+                                        <option value="">-- Seleccione --</option>         
+                                    </select>
+                                    <div class="valid-feedback">Looks good!</div>
+                                </div>
+                            </div> 
+                            <div class="row g-2">
+                                <div class="col-md-3">   
+                                    text area va aqui 
+                                </div>
+                            </div>
+                        </div>
+            </div>
+            <div class="modal-footer">
+                <div class="card-footer">
+                    <button class="btn btn-primary" type="submit">Guardar</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    <input type="hidden" class="form-control" id="id" name="id" />
+                </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+{{-- asignar solicitud --}}
+<div class="modal" id="asignarSolicitud" tabindex="-1">
     <div class="modal-dialog modal-sm">
         <div class="modal-content">
             <div class="modal-header big-info">
                 <!--div class="card-title">Datos Personales</div-->
-                <h4 class="modal-title">Editar Rol</h4>
+                <h4 class="modal-title">Asginar Solicitud</h4>
             </div>
             <div class="modal-body">
-                <form method="POST" action="" class="needs-validation" id="formEditarRol" autocomplete="off">                    
+                <form method="POST" action="" class="needs-validation" id="formGestionarSolicitud" autocomplete="off">                    
                     @method('PUT')
                     <!--begin::Body-->
                     <div class="card-body">
@@ -140,40 +293,5 @@
         </div>
     </div>
 </div>
-
-{{-- Crear rol --}}
-<div class="modal" id="crearRol" tabindex="-1">
-    <div class="modal-dialog modal-sm">
-        <div class="modal-content">
-            <div class="modal-header big-info">                
-                <h4 class="modal-title">Crear Rol</h4>
-            </div>
-            <div class="modal-body">
-                <form method="POST" action="{{-- route('users.roles.store' ) --}}" class="needs-validation" id="crearRol" autocomplete="off">                    
-                    @csrf
-                    <!--begin::Body-->
-                    <div class="card-body">
-                        <div class="row g-2">
-                            <div class="col-md-">
-                                <label for="validationCustom02" class="form-label"><b>Nombre</b>
-                                    <span class="required-indicator sr-only"> (required)</span></label>
-                                <input type="text" class="form-control" id="name_m" name="name_m"
-                                    required="" value="">
-                                <div class="valid-feedback">Looks good!</div>
-                            </div>     
-                        </div>
-                    </div>
-            </div>
-            <div class="modal-footer">
-                <div class="card-footer">
-                    <button class="btn btn-primary" type="submit">Guardar</button>
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>                    
-                </div>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
-
 
 @endsection
