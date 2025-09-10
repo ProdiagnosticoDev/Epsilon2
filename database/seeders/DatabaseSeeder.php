@@ -35,7 +35,7 @@ class DatabaseSeeder extends Seeder
             // CargarCategoriasDanioEquipos::class
             // CategoriaSolicitudes::class
             // SubcategoriaDetallesTable::class,
-            CargarSolicitudesDesdeXLSSeeder::class
+            // CargarSolicitudesDesdeXLSSeeder::class
         ]);
     }
 }
