@@ -11,6 +11,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RolesController;
 use App\Http\Controllers\TipoDocumentoController;
 use App\Http\Controllers\ProrrogasController;
+use App\Http\Controllers\GastosController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -67,7 +68,25 @@ Route::middleware(['auth','verified','estado',
         ->name('cartas.list');
 
         Route::get('/generate-pdf', [ProrrogasController::class, 'generatePDF'])
-        ->name('pdf.generate');        
+        ->name('pdf.generate'); 
+        
+        
+    /**Ruta gastos **/
+
+
+    Route::get('/gastos', [GastosController::class, 'inicio'])
+    ->name('gastos.inicio');
+
+        /*Route::get('/generar_prorrogas/data', [GastosController::class, 'obtenerUsuariosDatatable'])
+        ->name('cartas.list');*/
+
+        Route::get('/get-tipo-gasto/{id}', [GastosController::class, 'tipo_gasto']); 
+
+        Route::post('/crear_gastos', [GastosController::class, 'store'])
+        ->name('gastos.store'); 
+
+
+
 });
 
     // Rutas sistemas

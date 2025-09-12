@@ -49,6 +49,12 @@
                   <p>Generar Prórrogas </p>
                 </a>
               </li>
+              <li class="nav-item">
+                <a href="<?php echo e(url('/gastos')); ?>" class="nav-link">
+                  <i class="nav-icon bi bi-circle"></i>
+                  <p>Gastos</p>
+                </a>
+              </li>              
             </ul>
           </li>
           <!--li class="nav-item">
