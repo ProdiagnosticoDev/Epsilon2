@@ -20,7 +20,7 @@ return new class extends Migration
             $table->unsignedTinyInteger('tipo_moneda'); 
             $table->string('descripcion');      
             $table->string('currentuser');                   
-            $table->timestamps();
+            $table->timestamps(); 
         });
     }
 
