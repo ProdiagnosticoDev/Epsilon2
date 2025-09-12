@@ -86,7 +86,7 @@
                                     <th>Importe</th>
                                     <th>Tipo moneda</th>
                                     <th>Descripción</th>
-                                    
+                                    <th title="Adjuntos" style="text-align:center"><i class="fa-solid fa-file"></i></th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -98,7 +98,9 @@
                                     <td><?php echo e($usuario->importe); ?></td>
                                     <td><?php echo e($usuario->moneda); ?></td>
                                     <td><?php echo e($usuario->descripcion); ?></td>
-
+                                    <td>
+                                        <a href="" target="_blank">Ver</a> 
+                                    </td>
                                 </tr>
                                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
                                 <tr>
@@ -210,7 +212,7 @@
                     <h4 class="modal-title">Crear gasto</h4>
                 </div>
                 <div class="modal-body">
-                    <form id="crear_gastos" method="POST" action="<?php echo e(url('/crear_gastos')); ?>" class="needs-validation">
+                    <form id="crear_gastos" method="POST" action="<?php echo e(url('/crear_gastos')); ?>" enctype="multipart/form-data" class="needs-validation">
                         <?php echo csrf_field(); ?>
                         <!--begin::Body-->
                         <div class="card-body">
@@ -230,15 +232,17 @@
 
                                     <div class="valid-feedback">Looks good!</div>
                                 </div>-->
-                                <div class="col-md-6">
+                                <input type="hidden" class="form-control" name="documento" id="documento" value="<?php echo e($currentuser); ?>" required="" readonly>
+
+                                <!--<div class="col-md-6">
                                     <label for="validationCustom02" class="form-label">Documento
                                         <span class="required-indicator sr-only"> (required)</span></label>
                                     <input type="text" class="form-control" name="documento" id="documento" value="<?php echo e($currentuser); ?>" required="" readonly>
                                     <div class="valid-feedback">Looks good!</div>
-                                </div>
+                                </div>-->
 
 
-
+<br>
                             </div>
                             <br>
                             <!--begin::Row-->
@@ -317,25 +321,24 @@
                             </div> 
                             <br>  
                             
-                            <!--<div class="row">
+                            <div class="row">
                                 <div class="col-md-12">
   
                                     <label  class="label control-label required">
                                         Fichero (factura, ticket, etc...)
                                     </label>
+                                    <br>
+                                    <br>
+                                    <div style="border-style: dotted; border-color:#DEDEDE ;  text-align:center; height:80px" >
+                                        <br>
 
-                                    <div class="filepicker" data-id="expense-form_documents" data-name="expense[documents][]" data-multiple="" data-accept=".pdf,.doc,.docx,.csv,.xls,.xlsx,.txt,.png,.jpg,.jpeg,.zip,.rar,.mp4,.ppt,.pptx"><input type="file" accept=".pdf,.doc,.docx,.csv,.xls,.xlsx,.txt,.png,.jpg,.jpeg,.zip,.rar,.mp4,.ppt,.pptx" multiple="" name="expense[documents][]" id="expense-form_documents"> 
-                                        <div class="filepicker-content">
-                                            <div class="file-default-message">
-                                                <i class="huge-icon huge-upload-04-stroke-rounded is-small text-current "></i> 
-                                                <span class="text-grey-400">Arrastra uno o varios archivos a esta zona o haz clic para explorar</span>
-                                            </div>
-                                        </div>
+                                        <input type="file" id="archivo" name="archivo" accept=".pdf,.doc,.docx,.csv,.xls,.xlsx,.txt,.png,.jpg,.jpeg,.zip,.rar,.mp4,.ppt,.pptx">
+
                                     </div>
-
+                                
                                 </div>                                
                            
-                            </div>-->                             
+                            </div>                            
 
                         </div>
                         <br>

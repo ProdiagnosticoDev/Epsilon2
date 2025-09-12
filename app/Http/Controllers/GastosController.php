@@ -12,6 +12,7 @@ use App\Models\TiposDocumento;
 use App\Models\User;
 use App\Models\Usuarios;
 use App\Models\Gastos;
+use App\Models\gastos_adjuntos;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\RedirectResponse;
@@ -97,6 +98,7 @@ class GastosController extends Controller
 public function store(Request $request) : RedirectResponse 
 {
     
+    //dd($request->all()); 
 
     $user = Auth::user();
     $currentuser = $user->name;
@@ -124,13 +126,50 @@ public function store(Request $request) : RedirectResponse
             'currentuser' => $id_currentuser, // Usuario autenticado
         ]); 
 
-        event(new Registered($registro_gastos));
+
+        //Almacenar adjunto
+
+        if ($request->hasFile('archivo')) {
+
+            $archivo = $request->file('archivo');
+
+            
+
+            // Generar nombre del archivo
+            $nombreOriginal = $archivo->getClientOriginalName();
+
+            //dd($nombreOriginal);
+
+            $nombreAlmacenado = uniqid() . '_' . $nombreOriginal;            
+
+            // Guardar en storage/app/public/adjuntos/TH_Gastos
+            $ruta = $archivo->storeAs('public/adjuntos/TH_Gastos/', $nombreAlmacenado);
+
+            gastos_adjuntos::create([
+                'id' => $registro_gastos->id, 
+                'adjunto' => $ruta,
+                'fecha' => now()->toDateString(),
+                'currentuser' => $id_currentuser,
+            ]);
+
+        }
+
+
+
         return redirect()->back()->with('success', 'Se registró el gasto exitosamente');
 
     } catch (\Exception $e) {
         //return redirect()->back()->with('error', 'Error: ' . $e->getMessage());
 
-        dd($e->getMessage());
+        //dd($e->getMessage());
+
+
+    dd([
+        'Ultimo id' => $registro_gastos->id,
+        'error' => $e->getMessage(),
+        'line' => $e->getLine(),
+        'file' => $e->getFile(),
+    ]);        
     }        
 }
 
